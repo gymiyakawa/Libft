@@ -6,7 +6,7 @@
 /*   By: gmiyakaw <gmiyakaw@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/26 14:45:44 by gmiyakaw          #+#    #+#             */
-/*   Updated: 2021/12/13 17:26:57 by gmiyakaw         ###   ########.fr       */
+/*   Updated: 2021/12/14 16:04:06 by gmiyakaw         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ char	**ft_split(const char *s, char c)
 {
 	int		sstart;
 	size_t	j;
-	size_t	ogstri;
+	int		ogstri;
 	char	**res;
 
 	if (!s)
@@ -65,7 +65,7 @@ char	**ft_split(const char *s, char c)
 	res = (char **)malloc((ft_scount((char *)s, c) + 1) * sizeof(char *));
 	if (!res || !s)
 		return (NULL);
-	while (++ogstri <= ft_strlen(s))
+	while ((++ogstri <= (int)ft_strlen(s)))
 	{
 		if (s[ogstri] != c && sstart < 0 && s[ogstri])
 			sstart = ogstri;
