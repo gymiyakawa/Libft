@@ -5,13 +5,12 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: gmiyakaw <gmiyakaw@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/16 11:23:46 by gmiyakaw          #+#    #+#             */
-/*   Updated: 2021/12/16 12:19:38 by gmiyakaw         ###   ########.fr       */
+/*   Created: 2021/12/16 13:33:51 by gmiyakaw          #+#    #+#             */
+/*   Updated: 2021/12/16 13:33:53 by gmiyakaw         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdlib.h>
 
 static size_t	ft_scount(const char *s, char c)
 {
