@@ -5,29 +5,26 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: gmiyakaw <gmiyakaw@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/26 14:45:44 by gmiyakaw          #+#    #+#             */
-/*   Updated: 2021/12/14 16:04:06 by gmiyakaw         ###   ########.fr       */
+/*   Created: 2021/12/16 11:23:46 by gmiyakaw          #+#    #+#             */
+/*   Updated: 2021/12/16 12:19:38 by gmiyakaw         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-/*
- ogstri starts at -1 for line limit reasons
-*/
 #include "libft.h"
 #include <stdlib.h>
 
-static int	ft_scount(char *s, char c)
+static size_t	ft_scount(const char *s, char c)
 {
-	int	count;
-	int	i;
+	size_t	count;
+	size_t	i;
 
 	count = 0;
 	i = 0;
-	while (s[i++])
+	while (s[i])
 	{
 		while (s[i] == c)
 			i++;
-		if (s[i] != 0)
+		if (s[i] != '\0')
 			count++;
 		while (s[i] && s[i] != c)
 			i++;
@@ -35,46 +32,48 @@ static int	ft_scount(char *s, char c)
 	return (count);
 }
 
-static char	*ft_makestr(char *ogstr, int start, int end)
+static	char	*ft_mksplt(const char *str, size_t n)
 {
-	char	*str;
-	int		i;
+	char	*temp;
+	size_t	i;
 
-	i = 0;
-	str = (char *)malloc(end - start + 1 * sizeof(char));
-	if (str == NULL)
+	temp = (char *)malloc ((n + 1) * sizeof(char));
+	if (!temp)
 		return (NULL);
-	while (start < end)
-		str[i++] = ogstr[start++];
-	str[i] = '\0';
-	return (str);
+	i = 0;
+	while (str[i] && i < n)
+	{
+		temp[i] = str[i];
+		i++;
+	}
+	temp[i] = '\0';
+	return (temp);
 }
 
-char	**ft_split(const char *s, char c)
+char	**ft_split(char const *s, char c)
 {
-	int		sstart;
+	char	**array;
+	size_t	i;
 	size_t	j;
-	int		ogstri;
-	char	**res;
+	size_t	k;
 
 	if (!s)
 		return (NULL);
-	ogstri = -1;
-	j = 0;
-	sstart = -1;
-	res = (char **)malloc((ft_scount((char *)s, c) + 1) * sizeof(char *));
-	if (!res || !s)
+	k = 0;
+	i = 0;
+	array = (char **)malloc ((ft_scount(s, c) + 1) * sizeof(char *));
+	if (!array)
 		return (NULL);
-	while ((++ogstri <= (int)ft_strlen(s)))
+	while (s[i])
 	{
-		if (s[ogstri] != c && sstart < 0 && s[ogstri])
-			sstart = ogstri;
-		if ((s[ogstri] == c || !s[ogstri]) && sstart >= 0)
-		{
-			res[j++] = ft_makestr((char *)s, sstart, ogstri);
-			sstart = -1;
-		}
+		while (s[i] == c)
+			i++;
+		j = i;
+		while (s[i] != c && s[i])
+			i++;
+		if (i > j)
+			array[k++] = ft_mksplt(s + j, i - j);
 	}
-	res[j] = 0;
-	return (res);
+	array[k] = NULL;
+	return (array);
 }
