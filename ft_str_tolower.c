@@ -1,30 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   ft_str_tolower.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gmiyakaw <gmiyakaw@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/16 12:17:38 by gmiyakaw          #+#    #+#             */
-/*   Updated: 2022/12/21 13:13:47 by gmiyakaw         ###   ########.fr       */
+/*   Created: 2022/12/13 16:34:59 by gmiyakaw          #+#    #+#             */
+/*   Updated: 2022/12/13 17:08:46 by gmiyakaw         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-// runs a string until the finalizing \0. Returns the length of s.
-// if an empty string is passed, displays an error message and returns -1.
+// changes each alphabetical character in a string to lower
+// case. Does nothing if the character is not a letter
+
 #include "libft.h"
 
-size_t	ft_strlen(const char *s)
+char	*ft_str_tolower(char *str)
 {
-	int	i;
+	size_t	i;
 
-	if (!s)
-	{
-		ft_printf("ft_strlen error: invalid/empty argument\n");
-		return (-1);
-	}
 	i = 0;
-	while (s[i])
+	while (str[i])
+	{
+		str[i] = ft_tolower(str[i]);
 		i++;
-	return (i);
+	}
+	return (str);
 }

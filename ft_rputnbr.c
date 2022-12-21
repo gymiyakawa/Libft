@@ -1,30 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   ft_rputnbr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gmiyakaw <gmiyakaw@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/16 12:17:38 by gmiyakaw          #+#    #+#             */
-/*   Updated: 2022/12/21 13:13:47 by gmiyakaw         ###   ########.fr       */
+/*   Created: 2022/02/16 10:56:25 by gmiyakaw          #+#    #+#             */
+/*   Updated: 2022/02/25 15:49:00 by gmiyakaw         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-// runs a string until the finalizing \0. Returns the length of s.
-// if an empty string is passed, displays an error message and returns -1.
 #include "libft.h"
 
-size_t	ft_strlen(const char *s)
+size_t	ft_rputnbr(long long int n)
 {
-	int	i;
+	size_t			count;
+	long long int	tmp;
 
-	if (!s)
+	count = 1;
+	if (n < 0)
 	{
-		ft_printf("ft_strlen error: invalid/empty argument\n");
-		return (-1);
+		n *= -1;
+		ft_putchar('-');
+		count++;
 	}
-	i = 0;
-	while (s[i])
-		i++;
-	return (i);
+	tmp = n;
+	while (tmp >= 10)
+	{
+		tmp = tmp / 10;
+		count++;
+	}
+	if (n < 10 && n >= 0)
+		ft_putchar(n + '0');
+	if (n >= 10)
+	{
+		ft_putnbr_fd((n / 10), 1);
+		ft_putchar((n % 10) + '0');
+	}
+	return (count);
 }

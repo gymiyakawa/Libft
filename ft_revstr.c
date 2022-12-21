@@ -1,30 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   ft_revstr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gmiyakaw <gmiyakaw@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/16 12:17:38 by gmiyakaw          #+#    #+#             */
-/*   Updated: 2022/12/21 13:13:47 by gmiyakaw         ###   ########.fr       */
+/*   Created: 2022/03/02 11:21:09 by gmiyakaw          #+#    #+#             */
+/*   Updated: 2022/11/17 14:52:17 by gmiyakaw         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-// runs a string until the finalizing \0. Returns the length of s.
-// if an empty string is passed, displays an error message and returns -1.
 #include "libft.h"
 
-size_t	ft_strlen(const char *s)
+char	*ft_revstr(char *str)
 {
-	int	i;
+	size_t	i;
+	size_t	j;
+	char	*rev;
 
-	if (!s)
-	{
-		ft_printf("ft_strlen error: invalid/empty argument\n");
-		return (-1);
-	}
+	rev = (char *)malloc((ft_strlen(str) + 1) * sizeof(char));
+	if (!rev)
+		return (NULL);
+	rev[ft_strlen(str)] = '\0';
 	i = 0;
-	while (s[i])
+	j = 0;
+	while (str[i])
 		i++;
-	return (i);
+	while (i-- > 0)
+		rev[j++] = str[i];
+	return (rev);
 }

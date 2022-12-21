@@ -1,30 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   x_calloc.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gmiyakaw <gmiyakaw@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/16 12:17:38 by gmiyakaw          #+#    #+#             */
-/*   Updated: 2022/12/21 13:13:47 by gmiyakaw         ###   ########.fr       */
+/*   Created: 2022/12/14 11:46:18 by gmiyakaw          #+#    #+#             */
+/*   Updated: 2022/12/20 15:07:29 by gmiyakaw         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-// runs a string until the finalizing \0. Returns the length of s.
-// if an empty string is passed, displays an error message and returns -1.
+// mallocs and bzeros "size" bytes of memory, displays error
+// message and exits in case of failure.
+
 #include "libft.h"
 
-size_t	ft_strlen(const char *s)
+void	*x_calloc(size_t size)
 {
-	int	i;
+	void	*str;
 
-	if (!s)
+	str = (void *)malloc (size);
+	if (str == NULL)
 	{
-		ft_printf("ft_strlen error: invalid/empty argument\n");
-		return (-1);
+		ft_printf("x_calloc error.\n");
+		exit (-1);
 	}
-	i = 0;
-	while (s[i])
-		i++;
-	return (i);
+	ft_bzero(str, (size));
+	return (str);
 }
