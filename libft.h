@@ -6,7 +6,7 @@
 /*   By: gmiyakaw <gmiyakaw@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/15 15:46:34 by gmiyakaw          #+#    #+#             */
-/*   Updated: 2022/12/21 13:10:30 by gmiyakaw         ###   ########.fr       */
+/*   Updated: 2022/12/21 14:57:01 by gmiyakaw         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,7 @@ int		ft_isdigit(int c);
 int		ft_isprint(int c);
 
 /*-------------------- WRITE/PRINT FUNCTIONS ------------------------*/
+void	ft_putchar(char c);
 void	ft_putchar_fd(char c, int fd);
 void	ft_putendl_fd(char *s, int fd);
 void	ft_putnbr_fd(int n, int fd);
@@ -87,7 +88,6 @@ t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
 
 /*----------------------- PRINTF FUNCTIONS -------------------------*/
 int		ft_printf(const char *input, ...);
-void	ft_putchar(char c);
 size_t	ft_rputnbr(long long int n);
 size_t	ft_rputstr(char *s);
 size_t	ft_rputnbr_base(long long int n, int base, char *base_str);
