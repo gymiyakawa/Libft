@@ -1,38 +1,44 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strnstr.c                                       :+:      :+:    :+:   */
+/*   ft_strjoin_free.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gmiyakaw <gmiyakaw@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/24 17:02:42 by gmiyakaw          #+#    #+#             */
-/*   Updated: 2023/01/27 19:03:50 by gmiyakaw         ###   ########.fr       */
+/*   Created: 2023/01/12 15:12:54 by gmiyakaw          #+#    #+#             */
+/*   Updated: 2023/01/27 19:02:26 by gmiyakaw         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+/*
+same as strjoin but frees the first argument string
+*/
 #include "libft.h"
+#include <stdlib.h>
 
-char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
+char	*ft_strjoin_free(char const *s1, char const *s2)
 {
+	size_t	t_len;
 	size_t	i;
 	size_t	j;
+	char	*res;
 
-	j = 0;
+	if (!s1 || !s2)
+		return (NULL);
+	t_len = ft_strlen(s1) + ft_strlen(s2);
 	i = 0;
-	if (needle[0] == '\0')
-		return ((char *)&haystack[0]);
-	while (haystack[i] && needle[j] && i < len && len > 0)
+	j = 0;
+	res = (char *)malloc((t_len + 1) * sizeof(char));
+	if (res == NULL)
+		return (NULL);
+	while (s1[i])
 	{
-		while (haystack[i] == needle [j] && haystack && i < len)
-		{
-			if (needle[j + 1] == '\0')
-				return ((char *)&haystack[i - j]);
-			i++;
-			j++;
-		}
-		i -= j;
-		j = 0;
+		res[i] = s1[i];
 		i++;
 	}
-	return (NULL);
+	while (s2[j])
+		res[i++] = s2[j++];
+	res[i] = '\0';
+	free((void *)s1);
+	return (res);
 }

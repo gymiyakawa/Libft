@@ -1,38 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strnstr.c                                       :+:      :+:    :+:   */
+/*   ft_free_array.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gmiyakaw <gmiyakaw@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/24 17:02:42 by gmiyakaw          #+#    #+#             */
-/*   Updated: 2023/01/27 19:03:50 by gmiyakaw         ###   ########.fr       */
+/*   Created: 2023/01/19 13:52:20 by gmiyakaw          #+#    #+#             */
+/*   Updated: 2023/01/27 19:02:05 by gmiyakaw         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+	// frees every string in the array, and the pointer
+	// itself at the end
 #include "libft.h"
 
-char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
+void	ft_free_array(char **array)
 {
 	size_t	i;
-	size_t	j;
 
-	j = 0;
 	i = 0;
-	if (needle[0] == '\0')
-		return ((char *)&haystack[0]);
-	while (haystack[i] && needle[j] && i < len && len > 0)
+	while (array[i])
 	{
-		while (haystack[i] == needle [j] && haystack && i < len)
-		{
-			if (needle[j + 1] == '\0')
-				return ((char *)&haystack[i - j]);
-			i++;
-			j++;
-		}
-		i -= j;
-		j = 0;
+		free(array[i]);
 		i++;
 	}
-	return (NULL);
+	free(array);
+	return ;
 }
