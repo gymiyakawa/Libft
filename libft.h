@@ -6,7 +6,7 @@
 /*   By: gmiyakaw <gmiyakaw@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/15 15:46:34 by gmiyakaw          #+#    #+#             */
-/*   Updated: 2023/01/19 13:59:20 by gmiyakaw         ###   ########.fr       */
+/*   Updated: 2023/03/15 14:13:17 by gmiyakaw         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@
 # include <unistd.h>
 # include <stdlib.h>
 # include <stdarg.h>
-
 /*--------------------------- STRUCTS -------------------------------*/
 typedef struct s_list
 {
@@ -39,6 +38,7 @@ void	*ft_memset(void	*b, int c, size_t n);
 
 /*-------------------- CONVERTION FUNCTIONS -------------------------*/
 int		ft_atoi(const char *str);
+long	ft_atol(const char *str);
 char	*ft_itoa(int n);
 void	ft_bzero(void *s, size_t n);
 int		ft_tolower(int c);
@@ -49,8 +49,9 @@ int		ft_toupper(int c);
 int		ft_isalnum(int c);
 int		ft_isalpha(int c);
 int		ft_isascii(int c);
-int		ft_isdigit(int c);
+int		ft_isdigit(char c);
 int		ft_isprint(int c);
+int		ft_is_nbr(char *str);
 
 /*-------------------- WRITE/PRINT FUNCTIONS ------------------------*/
 void	ft_putchar(char c);
@@ -69,6 +70,7 @@ void	ft_striteri(char *s, void (*f)(unsigned int, char *));
 size_t	ft_strlcat(char	*dst, const char	*src, size_t destsize);
 size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize);
 size_t	ft_strlen(const char *s);
+int		ft_arrlen(char **str);
 char	*ft_strmapi(char const *s, char (*f)(unsigned int, char));
 int		ft_strcmp(const char *s1, const char *s2);
 int		ft_strncmp(const char *s1, const char *s2, size_t n);

@@ -6,14 +6,14 @@
 /*   By: gmiyakaw <gmiyakaw@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/15 14:15:24 by gmiyakaw          #+#    #+#             */
-/*   Updated: 2021/11/18 13:37:55 by gmiyakaw         ###   ########.fr       */
+/*   Updated: 2023/03/10 10:50:09 by gmiyakaw         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_isdigit(int c)
+int	ft_isdigit(char c)
 {
 	if (c >= '0' && c <= '9')
-		return (1);
-	else
 		return (0);
+	else
+		return (1);
 }

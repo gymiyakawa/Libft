@@ -6,7 +6,7 @@
 /*   By: gmiyakaw <gmiyakaw@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/01 14:30:44 by gmiyakaw          #+#    #+#             */
-/*   Updated: 2021/12/13 14:32:55 by gmiyakaw         ###   ########.fr       */
+/*   Updated: 2023/02/17 11:19:28 by gmiyakaw         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ static int	ft_intsize(int n)
 
 	if (n == 0)
 		return (1);
-		intsize = 0;
+	intsize = 0;
 	if (n < 0)
 	{
 		intsize++;
@@ -62,7 +62,7 @@ char	*ft_itoa(int n)
 	char	*str;
 	int		size;
 
-	if (n > 2147483647 || n < -2147483648)
+	if (n > 2147483647 || n <= -2147483648)
 		return (NULL);
 	if (n == -2147483648)
 		return (ft_strdup("-2147483648"));
