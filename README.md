@@ -1,8 +1,6 @@
 # LIBFT
 
-A collection of functions used during 42QC Cursus
-
-Includes ft_printf.
+A collection of functions created during the 42 Cursus at 42QC
 
 ## Functions by type: 
 
@@ -60,7 +58,7 @@ Includes ft_printf.
 	ft_lstiter
 	ft_lstmap
 ### Printf Functions
-Very similar to their non "r" versions, but theses functions all return (save for printf iteself) the number of characters printed.
+Very similar to their non "r" versions, but theses functions all return the number of characters printed.
 
 	ft_printf
 	ft_rputnbr
@@ -68,6 +66,3 @@ Very similar to their non "r" versions, but theses functions all return (save fo
 	ft_rputnbr_base
 	ft_rputaddress
 	ft_rputchar
-
-## Notes
-W.I.P.
